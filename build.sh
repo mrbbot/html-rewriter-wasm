@@ -2,15 +2,6 @@
 set -e
 
 echo "---> Checking wasm-pack version..."
-# We need to make sure the version of wasm-pack uses Binaryen version_92,
-# which exports asyncify_get_state
-WASM_PACK_VERSION=$(wasm-pack --version)
-if [[ ! $WASM_PACK_VERSION =~ -asyncify$ ]]; then
-  echo "$WASM_PACK_VERSION installed, please install mrbbot's fork:"
-  echo "cargo install --git https://github.com/mrbbot/wasm-pack"
-  exit 1
-fi
-
 echo "---> Building WebAssembly with wasm-pack..."
 wasm-pack build --target nodejs
 

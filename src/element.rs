@@ -104,14 +104,4 @@ impl Element {
     pub fn remove_and_keep_content(&mut self) -> Result<(), JsValue> {
         self.0.get_mut().map(|e| e.remove_and_keep_content())
     }
-
-    #[wasm_bindgen(method, js_name=onEndTag)]
-    pub fn on_end_tag(&mut self, handler: JsFunction) -> Result<(), JsValue> {
-        let this = JsValue::NULL;
-        let stack_ptr = self.0.stack_ptr;
-        self.0
-            .get_mut()?
-            .on_end_tag(make_handler!(handler, EndTag, this, stack_ptr))
-            .into_js_result()
-    }
 }

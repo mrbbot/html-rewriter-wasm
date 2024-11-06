@@ -1,5 +1,5 @@
---- pkg/html_rewriter.js	2022-01-18 17:37:39.000000000 +0000
-+++ pkg2/html_rewriter.js	2022-01-18 17:37:19.000000000 +0000
+--- pkg/html_rewriter.js
++++ pkg/html_rewriter.js
 @@ -1,7 +1,7 @@
  let imports = {};
  imports['__wbindgen_placeholder__'] = module.exports;
@@ -9,7 +9,7 @@
  const { TextDecoder, TextEncoder } = require(String.raw`util`);
  
  const heap = new Array(32).fill(undefined);
-@@ -233,6 +233,7 @@
+@@ -233,6 +233,7 @@ class Comment {
          var ptr0 = passStringToWasm0(content, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
          var len0 = WASM_VECTOR_LEN;
          wasm.comment_before(this.ptr, ptr0, len0, isLikeNone(content_type) ? 0 : addHeapObject(content_type));
@@ -17,7 +17,7 @@
      }
      /**
      * @param {string} content
-@@ -242,6 +243,7 @@
+@@ -242,6 +243,7 @@ class Comment {
          var ptr0 = passStringToWasm0(content, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
          var len0 = WASM_VECTOR_LEN;
          wasm.comment_after(this.ptr, ptr0, len0, isLikeNone(content_type) ? 0 : addHeapObject(content_type));
@@ -25,7 +25,7 @@
      }
      /**
      * @param {string} content
-@@ -251,11 +253,13 @@
+@@ -251,11 +253,13 @@ class Comment {
          var ptr0 = passStringToWasm0(content, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
          var len0 = WASM_VECTOR_LEN;
          wasm.comment_replace(this.ptr, ptr0, len0, isLikeNone(content_type) ? 0 : addHeapObject(content_type));
@@ -39,7 +39,7 @@
      }
      /**
      * @returns {boolean}
-@@ -364,6 +368,7 @@
+@@ -364,6 +368,7 @@ class DocumentEnd {
          var ptr0 = passStringToWasm0(content, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
          var len0 = WASM_VECTOR_LEN;
          wasm.documentend_append(this.ptr, ptr0, len0, isLikeNone(content_type) ? 0 : addHeapObject(content_type));
@@ -47,7 +47,7 @@
      }
  }
  module.exports.DocumentEnd = DocumentEnd;
-@@ -397,6 +402,7 @@
+@@ -397,6 +402,7 @@ class Element {
          var ptr0 = passStringToWasm0(content, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
          var len0 = WASM_VECTOR_LEN;
          wasm.element_before(this.ptr, ptr0, len0, isLikeNone(content_type) ? 0 : addHeapObject(content_type));
@@ -55,7 +55,7 @@
      }
      /**
      * @param {string} content
-@@ -406,6 +412,7 @@
+@@ -406,6 +412,7 @@ class Element {
          var ptr0 = passStringToWasm0(content, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
          var len0 = WASM_VECTOR_LEN;
          wasm.element_after(this.ptr, ptr0, len0, isLikeNone(content_type) ? 0 : addHeapObject(content_type));
@@ -63,7 +63,7 @@
      }
      /**
      * @param {string} content
-@@ -415,11 +422,13 @@
+@@ -415,11 +422,13 @@ class Element {
          var ptr0 = passStringToWasm0(content, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
          var len0 = WASM_VECTOR_LEN;
          wasm.element_replace(this.ptr, ptr0, len0, isLikeNone(content_type) ? 0 : addHeapObject(content_type));
@@ -77,16 +77,7 @@
      }
      /**
      * @returns {boolean}
-@@ -463,7 +472,7 @@
-     */
-     get attributes() {
-         var ret = wasm.element_attributes(this.ptr);
--        return takeObject(ret);
-+        return takeObject(ret)[Symbol.iterator]();
-     }
-     /**
-     * @param {string} name
-@@ -495,6 +504,7 @@
+@@ -495,6 +504,7 @@ class Element {
          var ptr1 = passStringToWasm0(value, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
          var len1 = WASM_VECTOR_LEN;
          wasm.element_setAttribute(this.ptr, ptr0, len0, ptr1, len1);
@@ -94,7 +85,7 @@
      }
      /**
      * @param {string} name
-@@ -503,6 +513,7 @@
+@@ -503,6 +513,7 @@ class Element {
          var ptr0 = passStringToWasm0(name, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
          var len0 = WASM_VECTOR_LEN;
          wasm.element_removeAttribute(this.ptr, ptr0, len0);
@@ -102,7 +93,7 @@
      }
      /**
      * @param {string} content
-@@ -512,6 +523,7 @@
+@@ -512,6 +523,7 @@ class Element {
          var ptr0 = passStringToWasm0(content, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
          var len0 = WASM_VECTOR_LEN;
          wasm.element_prepend(this.ptr, ptr0, len0, isLikeNone(content_type) ? 0 : addHeapObject(content_type));
@@ -110,7 +101,7 @@
      }
      /**
      * @param {string} content
-@@ -521,6 +533,7 @@
+@@ -521,6 +533,7 @@ class Element {
          var ptr0 = passStringToWasm0(content, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
          var len0 = WASM_VECTOR_LEN;
          wasm.element_append(this.ptr, ptr0, len0, isLikeNone(content_type) ? 0 : addHeapObject(content_type));
@@ -118,7 +109,7 @@
      }
      /**
      * @param {string} content
-@@ -530,17 +543,19 @@
+@@ -530,11 +543,13 @@ class Element {
          var ptr0 = passStringToWasm0(content, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
          var len0 = WASM_VECTOR_LEN;
          wasm.element_setInnerContent(this.ptr, ptr0, len0, isLikeNone(content_type) ? 0 : addHeapObject(content_type));
@@ -130,16 +121,9 @@
          wasm.element_removeAndKeepContent(this.ptr);
 +        return this;
      }
-     /**
-     * @param {any} handler
-     */
-     onEndTag(handler) {
--        wasm.element_onEndTag(this.ptr, addHeapObject(handler));
-+        wasm.element_onEndTag(this.ptr, addHeapObject(handler.bind(this)));
-     }
  }
  module.exports.Element = Element;
-@@ -597,6 +612,7 @@
+@@ -584,6 +599,7 @@ class EndTag {
          var ptr0 = passStringToWasm0(content, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
          var len0 = WASM_VECTOR_LEN;
          wasm.endtag_before(this.ptr, ptr0, len0, isLikeNone(content_type) ? 0 : addHeapObject(content_type));
@@ -147,7 +131,7 @@
      }
      /**
      * @param {string} content
-@@ -606,11 +622,13 @@
+@@ -593,11 +609,13 @@ class EndTag {
          var ptr0 = passStringToWasm0(content, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
          var len0 = WASM_VECTOR_LEN;
          wasm.endtag_after(this.ptr, ptr0, len0, isLikeNone(content_type) ? 0 : addHeapObject(content_type));
@@ -161,7 +145,7 @@
      }
  }
  module.exports.EndTag = EndTag;
-@@ -656,25 +674,27 @@
+@@ -643,25 +661,27 @@ class HTMLRewriter {
          var ptr0 = passStringToWasm0(selector, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
          var len0 = WASM_VECTOR_LEN;
          wasm.htmlrewriter_on(this.ptr, ptr0, len0, addHeapObject(handlers));
@@ -193,7 +177,7 @@
      }
      /**
      * @returns {number}
-@@ -715,6 +735,7 @@
+@@ -702,6 +722,7 @@ class TextChunk {
          var ptr0 = passStringToWasm0(content, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
          var len0 = WASM_VECTOR_LEN;
          wasm.textchunk_before(this.ptr, ptr0, len0, isLikeNone(content_type) ? 0 : addHeapObject(content_type));
@@ -201,7 +185,7 @@
      }
      /**
      * @param {string} content
-@@ -724,6 +745,7 @@
+@@ -711,6 +732,7 @@ class TextChunk {
          var ptr0 = passStringToWasm0(content, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
          var len0 = WASM_VECTOR_LEN;
          wasm.textchunk_after(this.ptr, ptr0, len0, isLikeNone(content_type) ? 0 : addHeapObject(content_type));
@@ -209,7 +193,7 @@
      }
      /**
      * @param {string} content
-@@ -733,11 +755,13 @@
+@@ -720,11 +742,13 @@ class TextChunk {
          var ptr0 = passStringToWasm0(content, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
          var len0 = WASM_VECTOR_LEN;
          wasm.textchunk_replace(this.ptr, ptr0, len0, isLikeNone(content_type) ? 0 : addHeapObject(content_type));
@@ -223,7 +207,7 @@
      }
      /**
      * @returns {boolean}
-@@ -893,7 +917,8 @@
+@@ -875,7 +899,8 @@ module.exports.__wbg_new_917809a3e20a4b00 = function(arg0, arg1) {
  };
  
  module.exports.__wbg_instanceof_Promise_c6535fc791fcc4d2 = function(arg0) {
@@ -233,7 +217,7 @@
      return ret;
  };
  
-@@ -939,5 +964,6 @@
+@@ -921,5 +946,6 @@ const bytes = require('fs').readFileSync(path);
  const wasmModule = new WebAssembly.Module(bytes);
  const wasmInstance = new WebAssembly.Instance(wasmModule, imports);
  wasm = wasmInstance.exports;
